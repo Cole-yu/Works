@@ -10,41 +10,24 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta content="black" name="apple-mobile-web-app-status-bar-style" />
 <meta content="telephone=no" name="format-detection" />
- <script type="text/javascript" src="http://win.newwinner.com.cn/common/js/jquery-1.72.js "></script>
+ <script type="text/javascript" src="../../common/js/jquery-1.72.js "></script>
 <link rel="stylesheet" href="css/style.css">
  <script src="../../common/js/clipboard.min.js"></script>
-<script>
-            (function (doc, win) {
-                var docEl = doc.documentElement,
-                  isIOS = navigator.userAgent.match(/iphone|ipod|ipad/gi),
-                  dpr = isIOS? Math.min(win.devicePixelRatio, 3) : 1,
-                  dpr = window.top === window.self? dpr : 1, //被iframe引用时，禁止缩放
-                  dpr = 1, // 首页引用IFRAME，强制为1
-                  scale = 1 / dpr,
-                  resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
-                docEl.dataset.dpr = win.devicePixelRatio;
-                if(navigator.userAgent.match(/iphone/gi) && screen.width == 375 && win.devicePixelRatio == 2){
-                  docEl.classList.add('iphone6')
-                }
-                if(navigator.userAgent.match(/iphone/gi) && screen.width == 414 && win.devicePixelRatio == 3){
-                  docEl.classList.add('iphone6p')
-                }
-                var metaEl = doc.createElement('meta');
-                metaEl.name = 'viewport';
-                metaEl.content = 'initial-scale=' + scale + ',maximum-scale=' + scale + ', minimum-scale=' + scale;
-                docEl.firstElementChild.appendChild(metaEl);
-                var recalc = function () {
-                    var width = docEl.clientWidth;
-                    if (width / dpr > 750) {
-                        width = 750 * dpr;
-                    }
-                    docEl.style.fontSize = 100 * (width / 750) + 'px';
-                  };
-                recalc()
-                if (!doc.addEventListener) return;
-                // win.addEventListener(resizeEvt, recalc, false);
-              })(document, window);
-        </script>
+<script type="text/javascript">
+  (function (doc, win) {
+	  var docEl = doc.documentElement,
+		resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		recalc = function () {
+		  var clientWidth = docEl.clientWidth;
+		  if (!clientWidth) return;
+		  docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+		};
+
+	  if (!doc.addEventListener) return;
+	  win.addEventListener(resizeEvt, recalc, false);
+	  doc.addEventListener('DOMContentLoaded', recalc, false);
+
+	})(document, window);</script>
 </head>
 <body>
 <script>
@@ -58,57 +41,58 @@ clipboard.on('error', function(e) {
 	console.log(e);
 });
 </script>
-  <div class="main">
+<div class="main">
     <div class="hbBox">
         <div class="hbTop">
-            <div class="title">
-              <img src="images/li.png" alt="" />
-            </div>
+            <div class="title"><img src="images/li.png" alt="" /></div>
             <div class="no">已有10万3645人领取</div>
-            <b class="btnCai">
-              <pre>拆</pre>
-            </b>
-            <div class="btnCai-after">
-              <span>奖</span>
-          </div>
+            <b class="btnCai"><pre>拆</pre></b>
+        <div class="titb"><img src="images/tit.png" alt="" /></div>
+        <div class="btnCai-after"><pre>奖</pre></div>
         </div>
-        <div class="hbBottom" ></div>
+      <div class="hbBottom" ></div>
         <div class="hbDraw">
+            <div class="banner"><img src="images/banner.png" alt="" /></div>
+            <div id="disappare" style="display:none;">
+           复制成功！<br />
+            如复制失败请长按复制微信号
+        </div>
+            <div class="tit">添加微信  新春礼包免费领</div>
+             <div class="btn"><div id="cpLink" class="qq-groupNo">ytx522</div></div>
+    <div class="step">
+    <div class="box"><h2>第1步</h2><div class="kb"><div class="kuang"></div><div class="left wxh posTop" data-clipboard-action="copy" data-clipboard-target="#cpLink">复制微信号</div></div></div>
+    
+    <div class="box"><h2>第2步</h2><div class="kb"><div class="kuang"></div><div class="right"><a href="javascript:window.location.href='weixin://'">点此打开微信</a></div></div></div>
+    </div>
         </div>
     </div>
     <div class="foot">投资有风险 入市需谨慎</div>
-  </div>
-</body>
- <script>                
+
+</div>
+
+ <script>           
 $(document).ready(function() {
     // 点击redbutton按钮时执行以下全部
     $('.btnCai').click(function(){
         // 在带有red样式的div中添加shake-chunk样式
       $('.btnCai').addClass('redBagrotate');
-        
-        // 点击按钮2000毫秒后加入到时间执行的队列中，执行以下操作
+        // 点击按钮2000毫秒后执行以下操作
         setTimeout(function(){
-            $('.hbBottom').css("display" , "none");
-            $('.btnCai').css("display" , "none");
-            $(".hbPerson-2").addClass("hover").animate({"top":"14.625rem"},100);
-            $(".btnCai-after").addClass("hover").animate({"top":"2rem"},100)                         
-            $(".btnCai-after").animate({"top":"6.7rem"},100);         
-            $(".btnCai-after").css("opacity","1");     
-
-            // 将hbtop向上偏移5rem的距离
-            $(".hbTop").animate({"top":"-5rem"},300);
+              $('.hbBottom,.no').css("display" , "none");
+              $('.btnCai').css("display" , "none");
+              $(".hbPerson-2").addClass("hover").animate({"top":"14.625rem"},100);
+            $(".btnCai-after").addClass("hover").animate({"top":"6.7rem"},100);  
+             $(".btnCai-after").css("opacity","1"); 
+                $(".hbTop").animate({"top":"-5rem"},300);
             
-            // // 将hbbottom向下偏离100%的距离
-            // $(".hbBottom").animate({"bottom":"-100%"},100);
-
-            // 显示hbdraw
+           $(".titb").addClass("hover");
+            $(".hbBottom").animate({"bottom":"-100%"},100);
             $(".hbDraw").css("opacity","1");
-            $(".hbDraw h3").addClass("hover");
+            $(".banner").addClass("hovers");
         },2000);
     });
 });
 </script>
-
 <script type="text/javascript">
     $(function(){
         $(".left,.right").click(function(){
