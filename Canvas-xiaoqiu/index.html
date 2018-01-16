@@ -6,16 +6,20 @@
 	<link rel="stylesheet" type="text/css" href="index.css">	
 </head>
 <body>
-	<canvas id="canvas" width="600" height="300">
-	浏览器不支持canvas
-	</canvas>	
+	<div id="canvas-bg">
+		<canvas id="canvas" width="600" height="300">浏览器不支持canvas</canvas>
+		<canvas id="text" width="600" height="300">浏览器不支持canvas</canvas>
+	</div>	
 	<hr>
-	<div id="start">
-		start
-	</div>
-	<div id="stop">stop</div>
+	<button id="start">start</button>
+	<button id="stop">stop</button>
+	<button id="start1">start1</button>
+	<button id="start2">start2</button>
+	<button id="stop2">stop2</button>
 	<p>第一步：点击start按钮，加载load函数</p>
 	<p>第二步：鼠标点击画布，确定小球动画起始的位置</p>	
+	<hr>
+	<canvas id="test" width="600" height="300"></canvas>
 
 	<!-- 在未使用jquery的情况下，引入js的位置影响很大，放在head中会报错，因为此时dom还未载入完成 -->
 	<script type="text/javascript" src="index.js"></script>	
