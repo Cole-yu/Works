@@ -52,3 +52,26 @@ p{
 	padding: 5px 10px;
 	margin-left: 50px;
 }
+
+
+ul li{
+	list-style: none;
+	display: inline;
+}
+
+/*span为行内元素不能设置宽度和高度，通过设置display为inline-block，使其对内既有宽高的属性，对外又为行内元素*/
+ul li span{
+	display: inline-block;	
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	border: solid 1px #ddd;
+	text-align: center;
+	line-height: 90px;
+}
+.selected{
+	background: #666;    
+    color: white;
+    box-shadow: 0 0 20px 5px #f1f1f1;
+    border: solid 1px #666;
+}

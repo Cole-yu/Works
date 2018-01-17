@@ -350,3 +350,23 @@ document.getElementById("stop2").addEventListener("click",function(){
   window.cancelAnimationFrame(cir_raf);
 },true);
 
+
+//鼠标点击添加selected类
+function selected(e) {  
+  console.log(e);
+  //console.log(e.clientX);
+  if (this.classList.contains("selected")) {
+    this.classList.remove("selected");  
+  }
+  else{
+    this.classList.add("selected");
+  }  
+}
+
+var btn=document.getElementsByTagName("span");  // var btn=document.querySelectorAll("span");
+for (var i = 0,len=btn.length; i<len; i++) {
+  btn[i].addEventListener("click",selected,true);
+}
+// btn.addEventListener("click",function(e){
+//   selected(e);
+// },true);
