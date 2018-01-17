@@ -12,7 +12,7 @@ body,p,h1,div,span,button,canvas{
 	cursor: pointer;
 }
 #canvas-bg{
-	background: url(./images/flowers.png) no-repeat;
+	/*background: url(./images/flowers.png) no-repeat;*/
 	position: relative;			
 	z-index: 1;
 	height: 300px;

@@ -16,109 +16,120 @@
 // // start.addEventListener("click",draw,true);
 
 
-// -------------------------------------------------------------------------------
+//--------------时钟动画---------------------------------------------------------
+var start=document.getElementById("start");
+start.addEventListener("click",clock,true);
+function clock(){
+  var now = new Date();
+  var ctx = document.getElementById('canvas').getContext('2d');
+  ctx.save();
+  ctx.clearRect(0,0,150,150);       //清除原有的时针、分针、秒针
+  ctx.translate(75,75);
+  ctx.scale(0.4,0.4);               //缩放画布，则动画也会整体变小
+  ctx.rotate(-Math.PI/2);
+  ctx.strokeStyle = "black";
+  ctx.fillStyle = "white";
+  ctx.lineWidth = 8;
+  ctx.lineCap = "round";
 
+  // 画每小时刻度
+  ctx.save();
+  for (var i=0;i<12;i++){
+    ctx.beginPath();
+    ctx.rotate(Math.PI/6);
+    ctx.moveTo(100,0);
+    ctx.lineTo(120,0);
+    ctx.stroke();
+  }
+  ctx.restore();
 
-//var start=document.getElementById("start");
-// start.addEventListener("click",clock,true);
-// function clock(){
-//   var now = new Date();
-//   var ctx = document.getElementById('canvas').getContext('2d');
-//   ctx.save();
-//   ctx.clearRect(0,0,150,150);
-//   ctx.translate(75,75);
-//   ctx.scale(0.4,0.4);
-//   ctx.rotate(-Math.PI/2);
-//   ctx.strokeStyle = "black";
-//   ctx.fillStyle = "white";
-//   ctx.lineWidth = 8;
-//   ctx.lineCap = "round";
-
-//   // Hour marks
-//   ctx.save();
-//   for (var i=0;i<12;i++){
-//     ctx.beginPath();
-//     ctx.rotate(Math.PI/6);
-//     ctx.moveTo(100,0);
-//     ctx.lineTo(120,0);
-//     ctx.stroke();
-//   }
-//   ctx.restore();
-
-//   // Minute marks
-//   ctx.save();
-//   ctx.lineWidth = 5;
-//   for (i=0;i<60;i++){
-//     if (i%5!=0) {
-//       ctx.beginPath();
-//       ctx.moveTo(117,0);
-//       ctx.lineTo(120,0);
-//       ctx.stroke();
-//     }
-//     ctx.rotate(Math.PI/30);
-//   }
-//   ctx.restore();
+  // 画分，秒刻度
+  ctx.save();
+  ctx.lineWidth = 5;
+  for (i=0;i<60;i++){
+    if (i%5!=0) {
+      ctx.beginPath();
+      ctx.moveTo(117,0);
+      ctx.lineTo(120,0);
+      ctx.stroke();
+    }
+    ctx.rotate(Math.PI/30);
+  }
+  ctx.restore();
  
-//   var sec = now.getSeconds();
-//   var min = now.getMinutes();
-//   var hr  = now.getHours();
-//   hr = hr>=12 ? hr-12 : hr;
+  var sec = now.getSeconds();
+  var min = now.getMinutes();
+  var hr  = now.getHours();
 
-//   ctx.fillStyle = "black";
+  hr = hr>=12 ? hr-12 : hr; //24小时制，超过12小时，则减去12
 
-//   // write Hours
-//   ctx.save();
-//   ctx.rotate( hr*(Math.PI/6) + (Math.PI/360)*min + (Math.PI/21600)*sec )
-//   ctx.lineWidth = 14;
-//   ctx.beginPath();
-//   ctx.moveTo(-20,0);
-//   ctx.lineTo(80,0);
-//   ctx.stroke();
-//   ctx.restore();
+  ctx.fillStyle = "black";
 
-//   // write Minutes
-//   ctx.save();
-//   ctx.rotate( (Math.PI/30)*min + (Math.PI/1800)*sec )
-//   ctx.lineWidth = 10;
-//   ctx.beginPath();
-//   ctx.moveTo(-28,0);
-//   ctx.lineTo(112,0);
-//   ctx.stroke();
-//   ctx.restore();
+  // 绘制时针
+  ctx.save();
+
+  //每小时转30度，每60分钟转30度，每3600转30度，时针旋转角度=（30*hr)+（min/2）+(sec/120)
+  ctx.rotate( hr*(Math.PI/6) + (Math.PI/360)*min + (Math.PI/21600)*sec )
+  ctx.lineWidth = 14;
+  ctx.beginPath();
+  ctx.moveTo(-20,0);    //时针尾巴有20px的突出区域
+  ctx.lineTo(80,0);     
+  ctx.stroke();
+  ctx.restore();
+
+  // 绘制分针
+  ctx.save();         
+  //每分钟旋转6度，每60秒旋转6度，分针选择角度=6*min+(sec/10)
+  ctx.rotate( (Math.PI/30)*min + (Math.PI/1800)*sec )
+  ctx.lineWidth = 10;
+  ctx.beginPath();
+  ctx.moveTo(-28,0);
+  ctx.lineTo(112,0);
+  ctx.stroke();
+  ctx.restore();
  
-//   // Write seconds
-//   ctx.save();
-//   ctx.rotate(sec * Math.PI/30);
-//   ctx.strokeStyle = "#D40000";
-//   ctx.fillStyle = "#D40000";
-//   ctx.lineWidth = 6;
-//   ctx.beginPath();
-//   ctx.moveTo(-30,0);
-//   ctx.lineTo(83,0);
-//   ctx.stroke();
-//   ctx.beginPath();
-//   ctx.arc(0,0,10,0,Math.PI*2,true);
-//   ctx.fill();
-//   ctx.beginPath();
-//   ctx.arc(95,0,10,0,Math.PI*2,true);
-//   ctx.stroke();
-//   ctx.fillStyle = "rgba(0,0,0,0)";
-//   ctx.arc(0,0,3,0,Math.PI*2,true);
-//   ctx.fill();
-//   ctx.restore();
+  // 绘制秒针
+  ctx.save();
+  //每秒钟旋转6度
+  ctx.rotate(sec * Math.PI/30);
 
-//   ctx.beginPath();
-//   ctx.lineWidth = 14;
-//   ctx.strokeStyle = '#325FA2';
-//   ctx.arc(0,0,142,0,Math.PI*2,true);
-//   ctx.stroke();
+  ctx.strokeStyle = "#D40000";
+  ctx.fillStyle = "#D40000";
+  ctx.lineWidth = 6;
+  ctx.beginPath();
+  ctx.moveTo(-30,0);
+  ctx.lineTo(83,0);
+  ctx.stroke();
 
-//   ctx.restore();
+  //绘制中心原点的实心圆
+  ctx.beginPath();
+  ctx.arc(0,0,10,0,Math.PI*2,true);
+  ctx.fill();
 
-//   window.requestAnimationFrame(clock);
-// }
+  //绘制秒针末端的空心圆
+  ctx.beginPath();
+  ctx.arc(95,0,10,0,Math.PI*2,true);
+  ctx.stroke();
 
-// //window.requestAnimationFrame(clock);
+  //影响秒针末端远的颜色及中心原点,未搞清楚状况
+  // ctx.fillStyle = "rgba(0,0,0,0)";
+  // ctx.arc(0,0,3,0,Math.PI*2,true);       //(0,0)处绘制一个透明的圆
+  // ctx.fill();
+
+  ctx.restore();
+
+  //绘制最外圈蓝色的圆环
+  ctx.beginPath();
+  ctx.lineWidth = 14;
+  ctx.strokeStyle = '#325FA2';
+  ctx.arc(0,0,142,0,Math.PI*2,true);
+  ctx.stroke();
+
+  //恢复未移动画布原点时的初始状态，为下次移动做准备
+  ctx.restore();
+
+  window.requestAnimationFrame(clock);
+}
 
 
 // ------------------------------------------------------------------------------
@@ -158,6 +169,10 @@
 //   }
 // }
 
+//小球运动动画-----------------------------------------
+
+// var start=document.getElementById("start");
+// start.addEventListener("click",load,true);
 
 var canvas=document.getElementById("canvas");
 var ctx=canvas.getContext("2d");
@@ -214,9 +229,6 @@ function draw() {
   //将告知浏览器你马上要开始动画效果了，后者需要在下次动画前调用相应方法来更新画面
   raf = window.requestAnimationFrame(draw);
 }
-
-var start=document.getElementById("start");
-start.addEventListener("click",load,true);
 
 //start点击后的加载操作
 function load() {  
