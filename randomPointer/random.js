@@ -18,6 +18,7 @@ var col_arr=[];     //颜色数组
 var deg_arr=[];     //角度数组
 var r_arr=[];       //半径数组
 const colors = ["#33B5E5","#0099CC","#AA66CC","#9933CC","#99CC00","#669900","#FFBB33","#FF8800","#FF4444","#CC0000"]; //点的颜色
+var sc;     //扫描动画计时器对象Id
 
 //执行动画入口
 loading();
@@ -47,9 +48,15 @@ function loading() {
         console.log(r_arr);
         console.log(deg_arr);
         console.log(col_arr);
+    }, 3000);                   //延迟3秒，用于初始动画，不断变大的圆形
+}
 
-        setTimeout(function(){      //1.2秒以后开始雷达扫描
-          var sc=setInterval(function(){
+document.querySelector(".btn").addEventListener("click",scan_start,true); //事件监听雷达扫描事件   
+document.querySelectorAll(".btn")[1].addEventListener("click",scan_stop,true); //事件监听雷达扫描事件
+
+//开始雷达扫描动画
+function scan_start() {
+    sc=setInterval(function(){
             ctx.clearRect(0,0,bodyWidth,bodyHeight);         
             drawcircle(bodyHeight/4);            
             if (def<Math.PI*2) {
@@ -64,9 +71,13 @@ function loading() {
             }
             scan(def);          //绘制扇形雷达扫描区域
         },10);                  //间隔10ms，3.6秒完成一次扫描，360*10/1000=3.6s  
-      },1200);                  //延迟1.2秒时间，用于第一次绘制100个随机点     
-    }, 3000);                   //延迟3秒，用于初始动画，不断变大的圆形
 }
+
+//停止雷达扫描动画
+function scan_stop(){
+    clearInterval(sc);      //停止计时器计数，保留着停止前的状态，可继续执行
+}
+
 
 //生成一个圆形区域,r为圆的半径
 function drawcircle(r) {

@@ -22,10 +22,27 @@
 			font-style: 24px;
 			padding: 5px;
 		}
+		.btn{
+			width: 110px;
+			height: 32px;
+			text-align: center;
+			line-height: 32px;
+			background-color: #000;
+			color: red;
+			cursor:pointer;
+			border:solid 1px #fff;
+			margin:5px auto 0;
+			border-radius: 5px;
+		}
 	</style>
 </head>
 <body>
-	<div id="title">雷达扫描效果图</div>
+	<div id="title">
+		雷达扫描效果图
+		<div class="btn">开始扫描</div>
+		<div class="btn">停止扫描</div>
+	</div>
+	
 	<canvas id="canvas"></canvas>
 	<script type="text/javascript" src="random.js"></script>
 </body>
