@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="keywords" content=""/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="email=no"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>砸金蛋</title>
+    <link rel="stylesheet" href="css/index.css"/>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="../../common/js/clipboard.min.js"></script> --><!-- 长按复制粘贴代码 -->
+  </head>
+  <body>
+    <!-- <script>
+    var clipboard = new Clipboard('.left');
+    clipboard.on('success', function(e) {
+      console.log(e);
+    });
+    clipboard.on('error', function(e) {
+      console.log(e);
+    });
+    </script> -->
+    <div class="wrap">
+      <div class="header">
+        <img src="images/awards_box.png" class="gongxi gongxi1 hidden"/>
+        <img src="images/egg.png" class="egg egg1"/>
+        <div class="egg-chip-wrap egg1 hidden">
+          <img src="images/egg-chip3.png" class="egg-chip3"/>
+          <img src="images/egg-chip4.png" class="egg-chip4"/>
+          <img src="images/egg-chip5.png" class="egg-chip5"/>
+        </div>
+        <img src="images/awards_box.png" class="gongxi gongxi2 hidden"/>
+        <img src="images/egg.png" class="egg egg2"/>
+        <div class="egg-chip-wrap egg2 hidden">
+          <img src="images/egg-chip3.png" class="egg-chip3"/>
+          <img src="images/egg-chip4.png" class="egg-chip4"/>
+          <img src="images/egg-chip5.png" class="egg-chip5"/>
+        </div>
+        <img src="images/awards_box.png" class="gongxi gongxi3 hidden"/>
+        <img src="images/egg.png" class="egg egg3"/>
+        <div class="egg-chip-wrap egg3 hidden">
+          <img src="images/egg-chip3.png" class="egg-chip3"/>
+          <img src="images/egg-chip4.png" class="egg-chip4"/>
+          <img src="images/egg-chip5.png" class="egg-chip5"/>
+        </div>
+        <img src="images/hammer.png" class="hammer info-bounce"/>
+      </div>
+      <div class="list"> <div class="list-wrap">
+        <div id="activity" class="activity">
+          <ul>
+            <li class="wenzi"><span>网友-细嗅蔷薇</span> 　砸出二等奖 　已添加助理领取</li>
+            <li class="wenzi"><span>网友-右手年华</span>　 砸出一等奖 　已添加助理领取</li>
+            <li class="wenzi"><span>网友-元气妹妹</span> 　砸出三等奖 　已添加助理领取</li>
+            <li class="wenzi"><span>网友-天下第一</span> 　砸出三等奖 　已添加助理领取</li>
+            <li class="wenzi"><span>网友-習慣沉默</span>　 砸出一等奖 　已添加助理领取</li>
+            <li class="wenzi"><span>网友-左手倒影</span> 　砸出二等奖 　已添加助理领取</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <strong>投资有风险 入市需谨慎</strong>
+    </div>
+    <div class="mask hidden">
+      <div class="bg">
+        <div class="zhongjiang">
+          <div class="close">X</div>
+          <div id="close" class="close-mask"></div>
+          <p id="award">dddd<br>ddd</p>
+          <div class="ti">添加微信免费领取</div>
+          <div class="btns">
+            <div class="weixin"><div id="cpLink" class="qq-groupNo">ytx9418</div></div></div>
+            <div class="we">
+              <!--copy-->
+              <div id="disappare" style="display:none;">
+                复制成功！<br />
+                如复制失败请长按复制微信号
+              </div>
+              <div class="step">
+                <div class="box"><h2>第1步</h2><div class="kb"><div class="kuang"></div><div class="left wxh posTop" data-clipboard-action="copy" data-clipboard-target="#cpLink">复制微信号</div></div></div>
+                
+                <div class="box"><h2>第2步</h2><div class="kb"><div class="kuang"></div><div class="right"><a href="javascript:window.location.href='weixin://'">点此打开微信</a></div></div></div>
+              </div>
+              <!--copy end--></div>
+            </div>
+          </div>
+        </div>
+        
+        <script type="text/javascript">
+          // 自适应处理
+          document.documentElement.style.fontSize = 100 * innerWidth / 640+ 'px';
+          addEventListener('load', function() {
+          setTimeout(function(){
+          document.documentElement.style.fontSize = 100 * innerWidth / 640 + 'px';
+          }, 480);
+          // 判断窗口是否在一个框架中
+          var isInApp = (window.self != window.top);
+          if (!isInApp) {
+          window.parent.postMessage({name: 'web:inject', token: Math.random().toString(), usertype: 1}, '*');
+          }
+          })
+          addEventListener('orientationchange', function() {
+          document.documentElement.style.fontSize = 100 * innerWidth / 640 + 'px'
+          });
+        </script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+          $(function(){
+          $(".left,.right").click(function(){
+          $("#disappare").show().delay(1500).hide(300);
+          });
+        })
+        </script>
+      </body>
+    </html>
