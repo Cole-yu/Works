@@ -20,22 +20,25 @@ var w = 400, h = 200;
 canvas.width = w;
 canvas.height = h;
 
+//初始化背景
 function reset(){
+  //canvas背景
   ctx.fillStyle = "#272822";
   ctx.fillRect(0,0,w,h);
   
+  //processBar背景
   ctx.fillStyle = "#171814";
   ctx.fillRect(25,80,350,25);
 }
 
-function progressbar(){
-  this.widths = 0;
-  this.hue = 0;
+function progressbar(){//构造器方法创建类
+  this.widths = 0;//进度条长度
+  this.hue = 0;//控制颜色
   
-  this.draw = function(){
+  this.draw = function(){//绘制当前进度的函数,进度条颜色渐变
     ctx.fillStyle = 'hsla('+this.hue+', 100%, 40%, 1)';
     ctx.fillRect(25,80,this.widths,25);
-    var grad = ctx.createLinearGradient(0,0,0,130);
+    var grad = ctx.createLinearGradient(0,0,0,130);//设置线性渐变
     grad.addColorStop(0,"transparent");
     grad.addColorStop(1,"rgba(0,0,0,0.5)");
     ctx.fillStyle = grad;
@@ -43,14 +46,15 @@ function progressbar(){
   }
 }
 
+//初始化每个离散点的属性
 function particle(){
-  this.x = 23 + bar.widths;
-  this.y = 82;
+  this.x = 23 + bar.widths;//控制喷发点的x坐标,每个离散点根据时间变化离开时的x坐标
+  this.y = 82; //控制喷发点的Y坐标,每个离散点离开时的y坐标
   
   this.vx = 0.8 + Math.random()*1;
   this.v = Math.random()*5;
   this.g = 1 + Math.random()*3;
-  this.down = false;
+  this.down = false;//离散点垂直方向的标记,当变为0后,down=true,g(+向上)=>g(变为0)=>g(+向下)
   
   this.draw = function(){
     ctx.fillStyle = 'hsla('+(bar.hue+0.3)+', 100%, 40%, 1)';;
@@ -68,9 +72,10 @@ function draw(){
   bar.hue += 0.8;
   
   bar.widths += 2;
-  if(bar.widths > 350){
+
+  if(bar.widths > 350){//进度条满时重置，循环播放
     if(counter > 215){
-      reset();
+      reset();//重置下列参数
       bar.hue = 0;
       bar.widths = 0;
       counter = 0;
@@ -79,18 +84,19 @@ function draw(){
     else{
       bar.hue = 126;
       bar.widths = 351;
-      bar.draw();
+      bar.draw();//绘制当前进度条长度
     }
   }
   else{
-    bar.draw();
-    for(var i=0;i<particle_no;i+=10){
-      particles.push(new particle());
+    bar.draw();//每次载入进度未满时，绘制进度条动画
+    for(var i=0;i<particle_no;i+=10){//i用于控制离散点的多少,i越小离散点越密集
+      particles.push(new particle());//把离散点添加进数组中
     }
   }
   update();
 }
 
+//离散点的运动效果,particles中存储离散点的样式
 function update(){
   for(var i=0;i<particles.length;i++){
     var p = particles[i];
@@ -114,9 +120,20 @@ function update(){
   }
 }
 
-function animloop() {
-  draw();
-  requestAnimFrame(animloop);
+
+var id;
+
+//可通过添加判断条件使用cancelAnimationFrame(id)停止动画
+function animloop() {//无限循环动画,
+  if(true){
+    draw();
+   id= requestAnimFrame(animloop);    
+  }
+  else{
+    //cancelAnimationFrame(id);
+    //todo
+  }
+  
 }
 
 animloop();
