@@ -1,0 +1,114 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+body{
+	/*display: flex;
+	align-items: center;
+	justify-content: center;*/
+}
+
+.audio{
+	margin:auto;
+	width: 500px;
+	height: 125px;
+	border-radius: 5px;
+	font-size: 17px;
+	color: #968983;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+.left{
+	width: 25%;
+	background-color: #a26b61;
+	height: 125px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	position: relative;
+	float: left;
+}
+.win{
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	top: 10px;
+	bottom: 10px;
+	background-color: #ddd;
+
+}
+.set{
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	top: 10px;
+	bottom: 10px;	
+	background-color: #a26b61;
+	border-radius: 50%;	
+	display: flex;	
+	justify-content: center;
+	align-items: center;
+}
+.set span{
+	font-size: 48px;
+    padding-left: 5px;
+    color: #fff;
+}
+.right{
+	float: left;
+	width: 75%;
+	height: 125px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background-color: #f0e8db;
+	padding: 15px 15px 0;
+}
+.song-name{
+	color: #6f5f5c;
+	font-size: 20px;	
+}
+.singer{
+	margin-top: 3px;
+}
+.song-bar{
+	width: 100%;
+	height: 10px;
+	border-radius: 5px;
+	background-color: #cfbfa2;
+	margin-top: 7px;
+}
+.song-progress{
+	width: 0;
+	height: 10px;
+	background-color:#f0b270;	
+	border-radius: 5px;
+}
+.adjust{
+	padding-top: 7px;
+	height: auto;	
+}
+.duration{
+	float: left;
+}
+.sound{
+	float: right;
+}
+.voice{
+	display: inline-block;
+	width: 180px;
+}
+.voice-bar{
+	width: 100%;
+	height: 15px;
+	border-radius: 6px;
+	background-color: #cfbfa2;
+}
+.voice-progress{
+	width: 10%;
+	height: 15px;
+	border-radius: 6px;
+	background-color: #e28f71;
+}

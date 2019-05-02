@@ -1,0 +1,51 @@
+html,body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+#navi{
+	font-size: 0;
+	padding-left: 0;	
+}
+
+#navi>li{	
+	color: red;	
+	list-style: none;
+	font-size: 15px;	
+	clear: both;
+}
+
+.category{
+	width: 100px;
+	padding: 15px;
+	border: 1px solid #ccc;
+	display: inline-block;
+	float: left;
+}
+
+#navi>li>ul{	
+	display: none;	
+	padding-left: 0;	
+	float: left;
+}
+
+#navi>li:hover>ul{
+	display: inline-block;	
+}
+
+.item{
+	position: absolute;
+	top: 0;
+}
+
+.item li{
+	width: 100px;
+	color: blue;
+	list-style: none;
+	padding: 15px;
+	margin: 0;
+	border: 1px solid #ddd;
+}

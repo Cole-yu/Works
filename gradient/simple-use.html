@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gradient</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<style type="text/css">
+		.container{
+			width: 900px;
+			height: 600px;	
+
+			/*浏览器私有属性 ，根据透明度渐变*/			
+			background: -webkit-linear-gradient(left, rgba(255,0,0,0), rgba(255,0,0,1));/* Chrome && Safari 5.1 - 6.0 */
+			background: -o-linear-gradient(left, red, blue); /* Opera 11.1 - 12.0 */
+  			background: -moz-linear-gradient(left, red, blue); /* Firefox 3.6 - 15 */
+			background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));/* 标准的语法 */
+
+			/*重复的线性渐变*/
+			/*background: repeating-linear-gradient(90deg,red 10%,blue 20%);*/
+
+			/*颜色渐变*/
+			/*background: linear-gradient(90deg,red,blue);*/
+		}
+	</style>
+</head>
+<body>
+	<div class="container"></div>
+
+
+</body>
+</html>

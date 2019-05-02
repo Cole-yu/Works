@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>border-image</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta charset="utf-8">
+	<style type="text/css">
+		.container{
+			width:400px;
+		    height:100px;
+		    border:1em double orange;
+		    border-image:url(./border.png) 27 round;
+		}
+
+		.demo{
+			width:400px;
+		    height:100px;
+		    border:1em double orange;
+		    border-image:url(./border.png) 54 round;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div>	
+			图片剪裁位置(border-image-slice)：没有单位，专指像素			
+		</div>
+	</div>
+
+	<br>
+
+	<a href="https://www.zhangxinxu.com/wordpress/2010/01/css3-border-image/" target="_blank" title="border-image详解">CSS3 border-image详解</a>
+
+	<br>
+
+	<div class="demo">
+		<div>	
+			图片为 81*81 
+			改变裁剪的四个角的大小 54*54，中间裁减没了，则不会显示，形成另一种样式花边框
+		</div>
+	</div>
+
+	<br>
+	
+	<div>		
+		实现原理：<br>
+			共存在两个九宫格，一个是边框图片，还有一个就是边框本身，九个方位关系一一对应。<br>
+			边框本身的特性让其变成了一个九宫格，四条边框交错，加上其围住的区域，正好形成一个九宫格。<br>
+			边框图片则是通过图片剪裁实现了九宫格。这是理解绘制原理的基础。<br>
+		执行重复属性：<br>
+			被填充至边框九宫格四个角落的的边框图片是不执行重复属性的。<br>
+			上下的九宫格执行水平方向的重复属性（拉伸或平铺），左右的格子执行垂直方向的重复属性，而中间的那个格子则水平重复和垂直方向的重复都要执行。
+	</div>
+</body>
+</html>

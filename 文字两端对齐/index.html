@@ -1,0 +1,32 @@
+<html>
+<head>
+	<meta http-equiv="pragma" content="no-cache"> 
+    <meta http-equiv="Cache-Control " content="no-cache,must-revalidate">    
+    <meta name="keywords" content="文字两端对齐">
+    <meta name="description" content="文字两端对齐">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+	<title>文字两端对齐</title>
+	<style type="text/css">
+		.box{
+		  	width: 200px;			
+		}
+		.test {
+		    text-align:justify;		    
+		}
+		.test::after{
+		    content:"";
+		    display: inline-block;
+		    width:100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<!-- 每个文字之间需要加一个空格，用于空间拉伸 -->
+	    <div class="test">用 户 名</div>
+	    <div class="test">密 码</div>	    
+	    <div class="test">工 作 单 位</div>
+	</div>
+</body>
+</html>
