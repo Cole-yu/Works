@@ -1,0 +1,94 @@
+*{
+	box-sizing: border-box;
+
+}
+
+ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+li:hover{
+	cursor: pointer;
+}
+
+#box {
+    width: 300px;
+    height: auto;
+    position: relative;
+    top: 30px;
+    left: 30px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#selectBox {  
+	/* border: 1px solid #ddd;  */
+}
+
+.version-title {
+	padding:5px 20px;
+	/* border: 1px solid #ddd;  */
+}
+.version-title:hover {
+	background: blue;
+	color: white;
+}
+
+.versionAcitve{
+	background: blue;
+	color: white;
+}
+
+.type{
+	display: none;
+}
+
+.type li{
+	
+}
+
+.type-title{
+	padding: 5px 40px;
+}
+
+.type-title:hover{
+	background: #03a9f4;
+	color: white;
+}
+
+.typeActive{
+	background: #03a9f4;
+	color: white;
+}
+
+.product{
+	display: none;
+}
+
+.product li{
+	padding:5px 60px;
+}
+
+.product li:hover{
+	background: #606083;
+	color: white;
+}
+
+.productActive{
+	background: #606083;
+	color: white;
+}
+
+.btn{
+	position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: blue;
+    color: white;
+    border: 1px solid #00f;	
+}

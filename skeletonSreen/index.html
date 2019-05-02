@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>skeleton</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="js/angular.js"></script>
+</head>
+<body>
+	<div ng-controller="checkInSelect" ng-click="btnClick()" style="border:1px solid #ddd;padding: 10px;">	
+		<skeleton ng-if="noReady"></skeleton>
+		<div ng-if="!noReady">
+			<div class="skeleton">
+			    <div class="skeleton-head stopLoading">加载完后的内容头部</div>
+			    <div class="skeleton-body">
+			        <div class="skeleton-title stopLoading">加载完后的内容标题</div>
+			        <div class="skeleton-content stopLoading">加载完后的内容正文</div>
+			    </div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

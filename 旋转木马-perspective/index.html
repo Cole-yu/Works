@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+
+	<!-- 参考网站第十部分：实际应用-图片的旋转木马效果:http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/ -->
+	<div class="stage">
+		<div class="box" >
+			<img src="./images/mm1.jpg" id="mm1" class="page">
+			<img src="./images/mm3.jpg" id="mm3" class="page">
+			<img src="./images/mm4.jpg" id="mm4" class="page">
+			<img src="./images/mm6.jpg" id="mm6" class="page">
+			<img src="./images/mm7.jpg" id="mm7" class="page">
+			<img src="./images/mm8.jpg" id="mm8" class="page">
+			<img src="./images/mm10.jpg" id="mm10" class="page">
+			<img src="./images/mm13.jpg" id="mm13" class="page">
+			<img src="./images/mm15.jpg" id="mm15" class="page">
+		</div>
+	</div>
+	<script type="text/javascript">
+		var pics=document.querySelectorAll(".page");
+		console.log(pics);
+		var pics_num=pics.length;
+		var angle=0;
+		for (var i = 0; i < pics_num; i++) {
+			pics[i].addEventListener("click",function(){
+				angle=angle+40;
+				var t=angle.toString()+"deg";
+				console.log(t);
+				document.querySelector(".box").style.transform= "rotateY(" + t + ")";
+			},true);
+		}
+	</script>
+</body>
+</html>
